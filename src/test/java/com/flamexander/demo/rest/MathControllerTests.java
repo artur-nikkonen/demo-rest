@@ -13,7 +13,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class MathControllerTests extends BaseTests {
 
-    private static Stream<Arguments> sumOkParams() {
+    private static Stream<Arguments> mathOkParams() {
         return createStreamWithConvertedAB(Stream.of(
                 Arguments.of("sum", -1, 1, 0),
                 Arguments.of("sum", 1, 1, 2),
@@ -30,7 +30,7 @@ public class MathControllerTests extends BaseTests {
         ));
     }
 
-    private static Stream<Arguments> sumOverflowParams() {
+    private static Stream<Arguments> mathOverflowParams() {
         return createStreamWithConvertedAB(Stream.of(
                 Arguments.of("sum", Integer.MAX_VALUE, 1),
                 Arguments.of("sum", Integer.MIN_VALUE, -1),
@@ -40,7 +40,7 @@ public class MathControllerTests extends BaseTests {
     }
 
     @ParameterizedTest
-    @MethodSource("sumOkParams")
+    @MethodSource("mathOkParams")
     public void mathCorrectTest(String operation, int a, int b, int result) {
         Integer answer = given()
                 .spec(specification)
@@ -56,7 +56,7 @@ public class MathControllerTests extends BaseTests {
     }
 
     @ParameterizedTest
-    @MethodSource("sumOverflowParams")
+    @MethodSource("mathOverflowParams")
     public void mathOverflowTest(String operation, int a, int b) {
         given()
                 .spec(specification)
