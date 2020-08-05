@@ -2,6 +2,8 @@ server:
   port: 8189
   servlet:
     context-path: /rest_service
+  error:
+    include-message: always
 spring:
   datasource:
     url: jdbc:h2:mem:testdb;MODE=PostgreSQL
